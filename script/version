@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_easy_rsa="0.0.1"
+  jq -n --arg easy_rsa "$ver_easy_rsa" '{easy_rsa: $easy_rsa}'
+}
+
+version "$@"
