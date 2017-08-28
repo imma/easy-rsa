@@ -4,7 +4,18 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  uname -a
+  local url_easy="https://github.com/OpenVPN/easy-rsa/releases/download/2.2.2/EasyRSA-2.2.2.tgz"
+
+  mkdir -p "$shome/vendor/easy-rsa-2.2.2"
+  cd "$shome/vendor/easy-rsa-2.2.2"
+  wget https://github.com/OpenVPN/easy-rsa/releases/download/2.2.2/EasyRSA-2.2.2.tgz
+  tar xfz  EasyRSA-2.2.2.tgz
+  rm -f EasyRSA-2.2.2.tgz
+
+  mkdir -p "$shome/bin"
+  for a in build-ca build-dh build-inter build-key build-key-pass build-key-pkcs12 build-key-server build-req build-req-pass clean-all inherit-inter list-crl pkitool revoke-full sign-req whichopensslcnf; do
+    ln -nfs "../vendor/easy-rsa-2.2.2/EasyRSA-2.2.2/$a" "$shome/bin/"
+  done
 }
 
 main "$@"
