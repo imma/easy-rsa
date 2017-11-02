@@ -3,12 +3,13 @@
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
+  source normalize
 
   local url_easy="https://github.com/OpenVPN/easy-rsa/releases/download/2.2.2/EasyRSA-2.2.2.tgz"
 
   mkdir -p "$shome/vendor/easy-rsa-2.2.2"
   cd "$shome/vendor/easy-rsa-2.2.2"
-  curl -o EasyRSA-2.2.2.tgz https://github.com/OpenVPN/easy-rsa/releases/download/2.2.2/EasyRSA-2.2.2.tgz
+  curl -L -o EasyRSA-2.2.2.tgz https://github.com/OpenVPN/easy-rsa/releases/download/2.2.2/EasyRSA-2.2.2.tgz
   tar xfz  EasyRSA-2.2.2.tgz
   rm -f EasyRSA-2.2.2.tgz
 
