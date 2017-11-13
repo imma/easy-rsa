@@ -3,10 +3,7 @@
 function _easy_rsa_profile {
   local shome="${_easy_rsa_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
-  #export ANSIBLE_ROLES_PATH="$shome/roles${ANSIBLE_ROLES_PATH:+:${ANSIBLE_ROLES_PATH}}"
-  #export ANSIBLE_LIBRARY="$shome/library${ANSIBLE_LIBRARY:+:${ANSIBLE_LIBRARY}}"
-
-  EASY_RSA_VERSION='2.2.2'
+  
   export EASY_RSA="$shome/vendor/easy-rsa-${EASY_RSA_VERSION}/EasyRSA-${EASY_RSA_VERSION}"
 }
 
